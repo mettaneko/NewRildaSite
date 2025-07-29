@@ -1,0 +1,1558 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@800&display=swap'); /* Объединены импорты шрифтов */
+
+/* ==================================== */
+/* 1. CSS Variables (Переменные)      */
+/* ==================================== */
+html {
+    scroll-behavior: smooth;
+}
+:root {
+    --bg-dark: rgb(1, 1, 1);            /* Основной фон из style.css */
+    --bg-medium: rgb(15, 15, 15);          /* Фон для блоков, хедера из style.css */
+    --bg-light: rgb(20, 20, 20);           /* Для внутренних элементов из style.css */
+    --text-light: white;                   /* Основной светлый текст из style.css */
+    --text-medium: rgb(182, 182, 182);     /* Для ховера меню, второстепенный текст из style.css */
+    --text-dark: rgb(180, 180, 180);       /* Для футера из style.css */
+    --text-white: #FFFFFF;   
+    --text-grite: #f7f7f7;                 /* Добавлено из style_.css */
+    --text-grey: #A0A0A0;                  /* Добавлено из style_.css */
+
+
+    --accent-blue: #3f7ff5;      /* Основной акцентный синий из style.css */
+    --accent-hover: #252525; /* Добавлено для ховера */
+
+    --accent-red: rgb(224, 36, 67);        /* Красный для негативных акцентов из style.css */
+    --accent-green: rgb(39, 211, 116);     /* Зеленый для позитивных акцентов из style.css */
+    --accent-purple: #8560ff;
+
+    --purple-main: #6A3FF5;                /* Добавлено из style_.css */
+    --purple-dark: #5833CD;                /* Добавлено из style_.css */
+    --blue-accent: #335AF7;                /* Добавлено из style_.css, конфликтовало с accent-blue, но оставлено для новых элементов */
+
+    --border-color: #444444;               /* Добавлено из style_.css */
+    --card-bg: #010101;
+    --card-bg-hover: #333333;                    /* Добавлено из style_.css */
+    --card-border: #333333;                /* Добавлено из style_.css */
+
+    --font-inter: 'Inter', sans-serif;
+    --font-manrope: 'Manrope', sans-serif;
+
+    --border-radius-base: 24px;            /* Радиус скругления для крупных блоков из style.css */
+    --border-radius-small: 20px;           /* Радиус для кнопок, изображений из style.css */
+
+    --spacing-xs: 10px;
+    --spacing-s: 20px;
+    --spacing-m: 40px;
+    --spacing-l: 60px;
+    --spacing-xl: 80px;
+    --spacing-xxl: 100px;
+}
+
+/* ==================================== */
+/* 2. Base Styles (Базовые стили)     */
+/* ==================================== */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Важно для адаптивности и расчета размеров */
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Сглаживание шрифтов для лучшей читаемости */
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevent horizontal scroll, добавлено из style_.css */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-light);
+    font-family: var(--font-manrope); /* Manrope для заголовков по умолчанию */
+    margin-bottom: var(--spacing-s); /* Отступ снизу для заголовков */
+}
+
+a {
+    color: inherit; /* Inherit color from parent, из style_.css, переопределяет accent-blue */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+#date_season {
+    filter: blur(3px);
+}
+#date_season:hover {
+    filter: blur(0px);
+}
+
+a:hover {
+    color: var(--text-white); /* Из style_.css, более универсально */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Убираем лишние отступы под изображением */
+}
+
+/* ==================================== */
+/* 3. Layout Utilities (Вспомогательные классы) */
+/* ==================================== */
+.wrap {
+    max-width: 1080px; /* Из style.css */
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-s); /* 15px */
+}
+
+.parttitle {
+    font-size: 2.5rem; /* 40px */
+    text-align: center;
+    margin-bottom: var(--spacing-xl); /* 80px */
+    padding-top: var(--spacing-l); /* 60px */
+    color: var(--text-white); /* Из style_.css */
+}
+
+/* ==================================== */
+/* 4. Header (Шапка сайта)            */
+/* ==================================== */
+.header {
+    display: flex;
+    justify-content: space-between; /* Из style_.css */
+    align-items: center;
+    padding: 20px 40px; /* Из style_.css */
+    max-width: 1400px; /* Из style_.css */
+    margin: 0 auto; /* Из style_.css */
+    position: relative;
+    z-index: 100; /* Из style_.css */
+    background-color: transparent; /* Убран фон, чтобы соответствовать style_.css */
+    border-radius: 0; /* Убран border-radius */
+}
+
+.header__left { /* Новый блок из style_.css */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#mobile_header{
+    display: none;
+}
+
+.header__logo { /* Новый стиль из style_.css */
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.header__logo img { /* Новый стиль из style_.css */
+    height: 30px;
+    margin-right: 8px;
+}
+
+.header__create-build-button { /* Новый стиль из style_.css */
+    background-color: var(--bg-dark-light);
+    color: var(--text-grey);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.header__create-build-button:hover { /* Новый стиль из style_.css */
+    background-color: #2a2a2a;
+    color: var(--text-white);
+}
+
+.header__nav ul { /* Новый стиль из style_.css (для основного меню) */
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.header__nav a { /* Новый стиль из style_.css */
+    color: var(--text-grey);
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.header__nav a:hover { /* Новый стиль из style_.css */
+    color: var(--text-white);
+}
+
+.header__login-button { /* Новый стиль из style_.css */
+    background-color: var(--purple-main);
+    color: var(--text-white);
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.header__login-button:hover { /* Новый стиль из style_.css */
+    background-color: var(--purple-dark);
+}
+
+/* Оставил стили для .menu и .logo из style.css, так как они более детальные,
+   но они будут перекрыты более общими .header__nav и .header__logo при использовании новых классов в HTML.
+   Если HTML будет использовать `header__nav` и `header__logo`, то эти стили можно удалить.
+   Однако, текущий HTML (index.html) использует `.menu` и `.logo`. Нужно адаптировать.
+   Переписываем .menu и .logo, чтобы соответствовать новому HTML и стилям style_.css: */
+
+/* Адаптация для существующего HTML */
+.header .wrap { /* Удаляем flex-direction: column; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 30px; /* Соответствует header__logo img height */
+    margin-right: 8px;
+    font-size: 24px; /* Соответствует header__logo font-size */
+    font-weight: 600; /* Соответствует header__logo font-weight */
+    color: var(--text-white); /* Соответствует header__logo color */
+}
+
+.logo-image {
+    height: 100%;
+    width: auto;
+    margin-right: 8px; /* Добавлено для соответствия header__logo img margin-right */
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 30px; /* Соответствует header__nav ul gap */
+}
+
+.menu li a {
+    font-family: var(--font-inter); /* Используем Inter */
+    text-decoration: none;
+    color: var(--text-grey); /* Соответствует header__nav a color */
+    font-size: 16px; /* Соответствует header__nav a font-size */
+    font-weight: 500; /* Соответствует header__nav a font-weight */
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    padding: 0; /* Убираем padding из .menu li */
+}
+
+.menu li a:hover {
+    color: var(--text-white); /* Соответствует header__nav a:hover color */
+}
+
+
+/* ==================================== */
+/* 5. Hero Section (Главная секция)   */
+/* ==================================== */
+.hero { /* Новый класс, стили из style_.css */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 40px auto 40px auto;
+    padding: 0 40px;
+    padding-top: 40px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px); /* Добавлено это свойство */
+    border-radius: 48px;
+    
+}
+.hero__video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет всю область, обрезая при необходимости */
+    z-index: -1; /* Помещает видео под содержимое hero__text-content */
+    filter: blur(10px); /* Применяет размытие к самому видео */
+    transition: all 0.3s ease;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемнение фонового изображения */
+    z-index: -1;
+    filter: blur(10px);
+    background: url('/assets/2023-06-28_14.50.01.png') center center no-repeat;
+    transition: all 0.3s ease;
+}
+
+.hero:hover::before {
+    filter: blur(0px); /* Применяет размытие к самому видео */
+}
+
+.hero__video-background:hover {
+    filter: blur(0px); /* Применяет размытие к самому видео */
+}
+.hero__content { /* Новый класс, стили из style_.css */
+    max-width: 550px;
+    z-index: 1;
+}
+
+.hero__title { /* Новый класс, стили из style_.css */
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    transition: all 0.3s ease-out;
+    border-radius: 12px;
+    
+}
+.hero__title:hover{
+    text-shadow: #ffffff 0px 0 40px;
+}
+
+.hero__description { /* Новый класс, стили из style_.css */
+    font-size: 16px;
+    color: var(--text-grite);
+    margin-bottom: 30px;
+}
+
+.hero__buttons { /* Новый класс, стили из style_.css */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.hero__our-server-button { /* Новый класс, стили из style_.css */
+    color: var(--text-white);
+    padding: 12px 30px;
+    border-radius: 8px;
+    border: 2px solid var(--text-white);
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.hero__our-server-button:hover { /* Новый класс, стили из style_.css */
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.hero__ip-display { /* Новый класс, стили из style_.css */
+    background-color: var(--bg-dark-light);
+    color: var(--text-light);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid var(--text-light);
+    transition: background-color 0.3s ease;
+}
+
+.hero__ip-display:hover { /* Новый класс, стили из style_.css */
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+
+.hero__spcoin-card { /* Новый класс, стили из style_.css */
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark-light);
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    max-width: 280px;
+}
+
+.hero__spcoin-card img { /* Новый класс, стили из style_.css */
+    height: 24px;
+    margin-right: 15px;
+}
+
+.hero__spcoin-card span { /* Новый класс, стили из style_.css */
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.hero__spcoin-card .add-icon { /* Новый класс, стили из style_.css */
+    margin-left: auto;
+    font-size: 24px;
+    color: var(--text-grey);
+}
+
+.hero__image-container { /* Новый класс, стили из style_.css */
+    position: absolute;
+    right: 0px;
+    top: 50%; /* Изменено на 50% */
+    transform: translateY(-50%); /* Добавлено для вертикального центрирования */
+    width: 650px;
+    height: 650px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero__image-container img { /* Новый класс, стили из style_.css */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hero__image-container video { /* Новый класс, стили из style_.css */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Адаптация для существующего HTML (.main__wrap) */
+.main__wrap { /* Сохраняем фон из style.css */
+    background: url('/img/2023-06-28_14.50.01.png') center center no-repeat; /* */
+    background-size: cover; /* */
+    padding: 75px 0 160px 0; /* */
+    position: relative; /* */
+    z-index: 1; /* */
+    display: flex; /* */
+    align-items: center; /* */
+    justify-content: center; /* */
+    min-height: 600px; /* */
+    text-align: center; /* */
+}
+
+.main__wrap::before { /* Затемнение из style.css */
+    content: ''; /* */
+    position: absolute; /* */
+    top: 0; /* */
+    left: 0; /* */
+    width: 100%; /* */
+    height: 100%; /* */
+    background-color: rgba(0, 0, 0, 0.5); /* */
+    z-index: -1; /* */
+}
+
+.main { /* Стили из style.css */
+    max-width: 720px; /* */
+    margin: 0 auto; /* */
+    padding: 0 var(--spacing-xs); /* */
+}
+
+.main__txt { /* Стили из style.css */
+    font-weight: 500; /* */
+    font-size: 1.5625rem; /* 25px */ /* */
+    margin-bottom: var(--spacing-s); /* 20px */ /* */
+    color: var(--text-grey); /* Соответствует hero__description */
+}
+
+.main__title { /* Стили из style.css */
+    font-size: 4.5rem; /* 72px */ /* */
+    margin-bottom: var(--spacing-m); /* 40px */ /* */
+    color: var(--text-white); /* Соответствует hero__title */
+    font-weight: 700; /* Соответствует hero__title */
+    line-height: 1.2; /* Соответствует hero__title */
+}
+
+.main__subtitle { /* Стили из style.css */
+    font-weight: 300; /* */
+    font-size: 1.3rem; /* */
+    margin-bottom: var(--spacing-m); /* 40px */ /* */
+    color: var(--text-grey); /* Соответствует hero__description */
+}
+
+/* ==================================== */
+/* 6. Buttons (Кнопки)                */
+/* ==================================== */
+.btn {
+    /* Ваши существующие стили... */
+    font-weight: 600;
+    color: var(--text-white);
+    background-color: var(--purple-main);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 12px 30px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.btn:hover {
+    background-color: var(--purple-dark);
+    transform: none;
+}
+
+.btn:active { /* Новый стиль для эффекта без тени */
+    transform: translateY(1px); /* Небольшое смещение вниз для ощущения "нажатия" */
+    /* box-shadow удален */
+    /* border-color: var(--purple-main);  Удалено, так как связано со свечением */
+}
+
+/* Применение аналогичного эффекта к другим кнопкам */
+
+.header__create-build-button {
+    /* Ваши существующие стили... */
+    transition: background-color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.header__create-build-button:active {
+    transform: translateY(1px);
+    /* box-shadow удален */
+}
+
+.header__login-button {
+    /* Ваши существующие стили... */
+    transition: background-color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.header__login-button:active {
+    transform: translateY(1px);
+    /* box-shadow удален */
+}
+
+.hero__our-server-button {
+    /* Ваши существующие стили... */
+    transition: background-color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.hero__our-server-button:active {
+    transform: translateY(1px);
+    /* box-shadow удален */
+}
+
+.hero__ip-display {
+    /* Ваши существующие стили... */
+    transition: background-color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.hero__ip-display:active {
+    transform: translateY(1px);
+    /* box-shadow удален */
+}
+
+.server-card__details-button {
+    /* Ваши существующие стили... */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s; /* box-shadow удален */
+}
+
+.server-card__details-button:active {
+    transform: translateY(1px);
+    /* box-shadow удален */
+}
+
+/* ==================================== */
+/* 7. Content Sections (Правила, Вики, Сезоны) */
+/* ==================================== */
+.servers-section { /* Новый класс, стили из style_.css */
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 0 40px;
+}
+
+.servers-section__title { /* Новый класс, стили из style_.css */
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.servers-grid { /* Новый класс, стили из style_.css */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.server-card { /* Новый класс, стили из style_.css */
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    padding-top: 15px;
+}
+
+.server-card:hover { /* Новый класс, стили из style_.css */
+    transform: scale(1.02);
+}
+
+.server-card__header { /* Новый класс, стили из style_.css */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.server-card__icon { /* Новый класс, стили из style_.css */
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.server-card__icon img { /* Новый класс, стили из style_.css */
+    width: 30px;
+    height: 30px;
+}
+
+.server-card__name { /* Новый класс, стили из style_.css */
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.server-card__tag { /* Новый класс, стили из style_.css (не используется в HTML) */
+    background-color: var(--blue-accent);
+    color: var(--text-white);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 15px;
+    text-transform: uppercase;
+}
+
+.server-card__description { /* Новый класс, стили из style_.css */
+    font-size: 15px;
+    color: var(--text-grey);
+    margin-bottom: 15px;
+    flex-grow: 1;
+    transition: all 0.3s ease, color 0.3s ease;
+}
+
+.server-card__description:hover { /* Новый класс, стили из style_.css */
+    color: var(--text-white);
+    font-size: 16px;
+}
+
+.server-card__details-button { /* Новый класс, стили из style_.css */
+    display: inline-block;
+    background-color: var(--bg-dark-light);
+    color: var(--text-grey);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.server-card__details-button:hover { /* Новый класс, стили из style_.css */
+    background-color: var(--accent-hover);
+    color: var(--text-white);
+    border-color: var(--accent-hover);
+}
+
+
+/* Specific server card styles from style_.css */
+.server-card--spm .server-card__icon { /* */
+    background-color: #333333;
+}
+
+.server-card--sp .server-card__icon { /* */
+    background-color: #333333;
+}
+
+/* Адаптация для существующего HTML (.plus__wrap) */
+.plus__wrap { /* Стили из style.css */
+    padding: var(--spacing-l) 0; /* 60px сверху/снизу */ /* */
+}
+
+.plus__item { /* Стили из style.css */
+    display: flex; /* */
+    align-items: center; /* */
+    justify-content: space-between; /* */
+    margin-bottom: var(--spacing-xxl); /* 100px */ /* */
+    gap: var(--spacing-m); /* Отступ между элементами */ /* */
+}
+
+.plus__item:last-child { /* Стили из style.css */
+    margin-bottom: 0; /* */
+}
+
+.plus__item.reversed { /* Стили из style.css */
+    flex-direction: row-reverse; /* */
+}
+
+.plus__img { /* Стили из style.css */
+    width: 47%; /* */
+    border-radius: var(--border-radius-small); /* */
+
+}
+
+.plus__txt { /* Стили из style.css */
+    width: 50%; /* */
+}
+
+.plus__txt h3 { /* Стили из style.css */
+    font-weight: 500; /* */
+    color: var(--accent-blue); /* */
+    font-size: 1.5rem; /* */
+    margin-bottom: var(--spacing-s); /* 20px */ /* */
+}
+
+.plus__txt h2 { /* Стили из style.css */
+    font-size: 2.5rem; /* */
+    margin-bottom: var(--spacing-m); /* 30px */ /* */
+}
+
+.plus__txt p { /* Стили из style.css */
+    font-size: 1.2rem; /* */
+    margin-bottom: var(--spacing-s); /* 20px */ /* */
+    color: var(--text-light); /* */
+}
+
+.plus__txt .red_color { /* Стили из style.css */
+    color: var(--accent-red); /* */
+}
+
+.plus__txt .green_color { /* Стили из style.css */
+    color: var(--accent-green); /* */
+}
+
+.plus__txt .purple_color { /* Стили из style.css */
+    color: var(--accent-purple); /* */
+}
+
+/* ==================================== */
+/* 8. Advantages Section (Плюсы нашего сервера) */
+/* ==================================== */
+.advantages__wrap { /* Стили из style.css */
+    padding: var(--spacing-l) 0; /* */
+    background-color: var(--bg-dark); /* */
+}
+
+.advantages__grid { /* Стили из style.css */
+    display: grid; /* */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* */
+    gap: var(--spacing-m); /* 40px */ /* */
+}
+
+.advantages__item { /* Стили из style.css */
+    background-color: var(--bg-medium); /* */
+    padding: var(--spacing-l); /* 60px */ /* */
+    border-radius: var(--border-radius-base); /* 16px */ /* */
+    text-align: center; /* */
+    border: 1px solid var(--bg-light); /* */
+    box-shadow: none; /* */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* */
+}
+
+.advantages__item:hover { /* Стили из style.css */
+    transform: translateY(-5px); /* */
+    border-color: var(--accent-blue); /* */
+}
+
+.advantages__item h3 { /* Стили из style.css */
+    font-size: 1.8rem; /* */
+    margin-bottom: var(--spacing-s); /* */
+    color: var(--text-light); /* */
+}
+
+.advantages__item p { /* Стили из style.css */
+    font-size: 1.1rem; /* */
+    color: var(--text-medium); /* */
+}
+
+/* ==================================== */
+/* 9. Footer (Подвал)                 */
+/* ==================================== */
+footer { /* Стили из style.css */
+    background-color: rgb(18, 18, 18); /* */
+    color: var(--text-dark); /* */
+    text-align: center; /* */
+    padding: var(--spacing-m) 0; /* 30px */ /* */
+    font-size: 0.9em; /* */
+    border-top: 1px solid var(--bg-medium); /* */
+}
+
+.footer { /* Новый класс, стили из style_.css */
+    background-color: var(--bg-dark);
+    border-top: 1px solid var(--border-color);
+    padding: 40px 40px;
+    color: var(--text-grey);
+    font-size: 14px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: left; /* Переопределяем text-align: center; из общего footer */
+}
+
+.footer__left p { /* Новый класс, стили из style_.css */
+    margin-bottom: 5px;
+}
+
+.footer__documents,
+.footer__contact { /* Новый класс, стили из style_.css */
+    min-width: 180px;
+}
+
+.footer__column-title { /* Новый класс, стили из style_.css */
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 15px;
+}
+
+.footer__documents ul,
+.footer__contact ul { /* Новый класс, стили из style_.css */
+    list-style: none;
+}
+
+.footer__documents li,
+.footer__contact li { /* Новый класс, стили из style_.css */
+    margin-bottom: 10px;
+}
+
+.footer__documents a,
+.footer__contact a { /* Новый класс, стили из style_.css */
+    color: var(--text-grey);
+    transition: color 0.3s ease;
+}
+
+.footer__documents a:hover,
+.footer__contact a:hover { /* Новый класс, стили из style_.css */
+    color: var(--text-white);
+}
+
+.footer__contact-email { /* Новый класс, стили из style_.css */
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer__payment-methods { /* Новый класс, стили из style_.css */
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer__payment-methods img { /* Новый класс, стили из style_.css */
+    height: 25px;
+}
+
+/* ==================================== */
+/* Styles for Rules Page              */
+/* ==================================== */
+
+.rules-section-page {
+    padding: 80px 40px;
+    max-width: 1400px;
+    margin: 40px auto;
+    background-color: transparent; /* Сделаем фон прозрачным, если хотим, чтобы фон .wrap был виден */
+    border-radius: 48px;
+}
+
+.rules-flex-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin: 0 auto 0 0; /* Перемещает контейнер с сайдбаром влево */
+    max-width: 1200px; /* Расширяет блок с правилами */
+}
+.rules-flex-container strong{
+    color: var(--accent-purple);
+}
+.rules-sidebar {
+    flex: 0 0 350px; /* Фиксированная ширина сайдбара */
+    background-color: var(--bg-medium);
+    border-radius: var(--border-radius-base);
+    padding: 40px;
+    position: sticky; /* Делаем сайдбар липким при прокрутке */
+    top: 50px; /* Отступ от верха, чтобы не перекрывать хедер */
+}
+.rules-sidebar hr {
+    border: none; /* Сбрасываем стандартные стили hr */
+    border-bottom: 1px solid var(--border-color); /* Применяем границу снизу */
+    margin: 20px 0; /* Добавляем отступы сверху и снизу */
+    opacity: 0.5; /* Делаем линию менее заметной */
+}
+
+
+
+.sidebar-title {
+    font-size: 1.5em;
+    color: var(--text-white);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rules-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rules-sidebar li {
+    margin-bottom: 15px;
+}
+
+.rules-sidebar a {
+    color: var(--text-grey);
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.rules-sidebar a:hover,
+.rules-sidebar a.active { /* Класс active можно добавлять с помощью JS, чтобы подсвечивать текущий раздел */
+    color: var(--text-white);
+}
+
+.rules-content {
+    flex-grow: 1; /* Основной контент занимает оставшееся пространство */
+    background-color: var(--bg-medium);
+    border-radius: var(--border-radius-base);
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.page-main-title {
+    font-size: 2.8em;
+    color: var(--text-white);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.recommendation-box {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--accent-purple); /* Для синей полоски слева */
+    border-radius: var(--border-radius-small);
+    padding: 20px 25px;
+    margin-bottom: 40px;
+}
+
+.recommendation-box h3 {
+    font-size: 1.3em;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    
+}
+.recommendation-box ul>li{
+    font-family: var(--font-inter);
+}
+.recommendation-box h3 .icon-recommendation {
+    /* Можно использовать иконку (например, из FontAwesome) или просто добавить стили для пустого элемента */
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-purple); /* Пример цвета иконки */
+    border-radius: 50%;
+    margin-right: 10px;
+    /* Если используете иконку, замените background-color на background-image: url(...) или FontAwesome icon */
+    
+}
+
+.recommendation-box p {
+    font-size: 1em;
+    color: var(--text-medium);
+    margin-bottom: 15px;
+}
+
+.recommendation-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.recommendation-box li {
+    font-family: 'monospace'; /* Для кнопок Ctrl+F */
+    color: var(--text-medium);
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.recommendation-box kbd {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-weight: bold;
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.rules-toc {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-small);
+    padding: 25px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-color);
+}
+
+.toc-title {
+    font-size: 1.4em;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rules-toc ol {
+    list-style: decimal; /* Нумерованный список */
+    list-style-position: inside; /* Номера внутри блока */
+    padding-left: 0;
+}
+
+.rules-toc li {
+    margin-bottom: 10px;
+}
+
+.rules-toc a {
+    color: var(--text-grey);
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.rules-toc a:hover {
+    color: var(--text-white);
+}
+
+.rule-category {
+    margin-bottom: 50px;
+}
+
+.rule-category-title {
+    font-size: 2em;
+    color: var(--text-white);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-purple);
+    padding-bottom: 10px;
+}
+
+.rule-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rule-list li {
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    border: 1px solid var(--border-color);
+}
+
+.rule-list li span { /* Для нумерации правил, если она не автоматическая */
+    font-weight: bold;
+    color: var(--accent-purple);
+    margin-right: 10px;
+    
+}
+
+.rule-list li a {
+    color: var(--accent-purple);
+    text-decoration: underline;
+}
+
+.rule-list li a:hover {
+    color: var(--text-white);
+}
+
+.rule-list ul { /* Для вложенных списков правил */
+    list-style: disc; /* Маркеры для вложенных списков */
+    padding-left: 25px;
+    margin-top: 15px;
+}
+
+.rule-list ul li {
+    background-color: transparent; /* Убрать фон для вложенных пунктов */
+    border: none;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 1024px) {
+    .rules-flex-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .rules-sidebar {
+        position: static; /* Снимаем sticky для мобильных */
+        flex: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .rules-content {
+        padding: 30px;
+    }
+
+    .page-main-title {
+        font-size: 2.2em;
+        text-align: center;
+    }
+
+    .recommendation-box {
+        margin-bottom: 30px;
+        padding: 15px 20px;
+    }
+
+    .recommendation-box h3 {
+        font-size: 1.2em;
+    }
+
+    .rules-toc {
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+
+    .toc-title {
+        font-size: 1.3em;
+    }
+
+    .rule-category-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .rule-list li {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .rules-section-page {
+        padding: 40px 20px;
+        margin: 20px auto;
+    }
+
+    .rules-content {
+        padding: 20px;
+    }
+
+    .page-main-title {
+        font-size: 1.8em;
+    }
+
+    .recommendation-box p,
+    .recommendation-box li {
+        font-size: 0.9em;
+    }
+
+    .rule-category-title {
+        font-size: 1.5em;
+    }
+
+    .rule-list li {
+        font-size: 0.95em;
+    }
+}
+
+/* ==================================== */
+/* 10. Media Queries (Адаптивность)    */
+/* ==================================== */
+
+/* Для планшетов и небольших ноутбуков (от 768px до 1024px) */
+@media (max-width: 1024px) {
+    .wrap {
+        padding: 0 var(--spacing-s); /* */
+    }
+    .header { /* Адаптация из style_.css */
+        padding: 15px 20px; /* */
+    }
+
+    .header__nav { /* Адаптация из style_.css */
+        display: none; /* */
+    }
+
+    /* Адаптация для HTML элементов, которые не имеют специфичных классов из style_.css */
+    .menu {
+        flex-direction: column;
+        gap: var(--spacing-s);
+    }
+    .menu li {
+        padding: 0;
+    }
+    .menu li a {
+        font-size: 1.1rem;
+    }
+
+
+    .hero { /* Адаптация из style_.css */
+        border-radius: 0px;
+        flex-direction: column; /* */
+        text-align: center; /* */
+        padding: 0 20px; /* */
+        margin-top: 20px; /* */
+    }
+
+    .hero__content { /* Адаптация из style_.css */
+        max-width: 100%; /* */
+        margin-bottom: 40px; /* */
+    }
+    #version {
+     padding-top: 20px;
+    }
+    .hero__title { /* Адаптация из style_.css */
+        font-size: 40px; /* */
+    }
+
+    .hero__buttons { /* Адаптация из style_.css */
+        justify-content: center; /* */
+        flex-wrap: wrap; /* */
+    }
+
+    .hero__image-container { /* Адаптация из style_.css */
+        display: none;
+        position: static; /* */
+        width: 100%; /* */
+        height: 350px; /* */
+        transform: none; /* */
+        clip-path: none; /* */
+        margin-top: 40px; /* */
+    }
+
+    .hero__image-container img { /* Адаптация из style_.css */
+        transform: none; /* */
+        object-fit: contain; /* */
+    }
+
+    .main__wrap { /* Адаптация из style.css */
+        padding: 50px 0 100px 0; /* */
+        min-height: auto; /* Адаптация */
+        background-position: top center; /* Лучше для мобильных */
+    }
+    .main__title { /* */
+        font-size: 3.5rem; /* */
+    }
+    .main__subtitle { /* */
+        font-size: 1.1rem; /* */
+    }
+    .btn { /* */
+        font-size: 1.3rem; /* */
+        padding: 14px 40px; /* */
+    }
+    .parttitle { /* */
+        font-size: 2rem; /* */
+        margin-bottom: var(--spacing-l); /* */
+    }
+
+    .servers-section { /* Адаптация из style_.css */
+        padding: 0 20px; /* */
+        margin: 60px auto; /* */
+    }
+
+    .servers-section__title { /* Адаптация из style_.css */
+        font-size: 30px; /* */
+    }
+
+    .servers-grid { /* Адаптация из style_.css */
+        flex-direction: column; /* */
+        align-items: center; /* */
+    }
+
+    .server-card { /* Адаптация из style_.css */
+        max-width: 90%; /* */
+        padding: 25px; /* */
+    }
+
+    .plus__img, .plus__txt { /* Адаптация из style.css */
+        width: 48%; /* */
+    }
+    .plus__txt h2 { /* */
+        font-size: 2rem; /* */
+    }
+    .plus__txt p { /* */
+        font-size: 1.1rem; /* */
+    }
+
+    .advantages__item { /* */
+        padding: var(--spacing-m); /* */
+    }
+    .advantages__item h3 { /* */
+        font-size: 1.6rem; /* */
+    }
+    .advantages__item p { /* */
+        font-size: 1rem; /* */
+    }
+
+    .footer { /* Адаптация из style_.css */
+        flex-direction: column; /* */
+        text-align: center; /* */
+        padding: 30px 20px; /* */
+    }
+
+    .footer__column-title { /* Адаптация из style_.css */
+        margin-top: 20px; /* */
+        margin-bottom: 10px; /* */
+    }
+
+    .footer__documents ul,
+    .footer__contact ul { /* Адаптация из style_.css */
+        padding-left: 0; /* */
+    }
+
+    .footer__payment-methods { /* Адаптация из style_.css */
+        justify-content: center; /* */
+    }
+
+    #mobile_header{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    #mobile_header ul{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    #mobile_header a{
+        color: var(--text-grey);
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    #mobile_header a:hover{
+        color: var(--text-white);
+    }
+}
+
+/* Для мобильных устройств (менее 768px) */
+@media (max-width: 768px) {
+    .header { /* Адаптация из style_.css */
+        flex-direction: column; /* */
+        align-items: flex-start; /* */
+        gap: 10px; /* */
+    }
+
+    #mobile_header{
+            display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header .wrap {
+        flex-direction: column;
+        align-items: center;
+    }
+    .header__logo { /* Адаптация из style_.css */
+        font-size: 20px; /* */
+    }
+
+    /* Адаптация для HTML элементов */
+    .logo {
+        height: 25px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .logo-image {
+        height: 100%;
+        margin-right: 5px;
+    }
+    .menu {
+        gap: 10px;
+    }
+    .menu li a {
+        font-size: 14px;
+    }
+
+    .header__create-build-button { /* Адаптация из style_.css */
+        padding: 6px 10px; /* */
+        font-size: 12px; /* */
+    }
+
+    .hero__title { /* Адаптация из style_.css */
+        font-size: 32px; /* */
+    }
+
+    .hero__description { /* Адаптация из style_.css */
+        font-size: 14px; /* */
+    }
+
+    .hero__buttons { /* Адаптация из style_.css */
+        flex-direction: column; /* */
+        gap: 15px; /* */
+    }
+
+    .hero__our-server-button,
+    .hero__ip-display { /* Адаптация из style_.css */
+        width: 100%; /* */
+        max-width: 300px; /* */
+    }
+
+    .hero__spcoin-card { /* Адаптация из style_.css */
+        max-width: 300px; /* */
+        width: 100%; /* */
+    }
+
+    .main__wrap { /* Адаптация из style.css */
+        padding: 50px 0 80px 0; /* */
+        min-height: 400px;
+    }
+    .main__txt { /* */
+        font-size: 1.25rem; /* */
+    }
+    .main__title { /* */
+        font-size: 2.8rem; /* */
+        margin-bottom: var(--spacing-s); /* */
+    }
+    .main__subtitle { /* */
+        font-size: 1rem; /* */
+        margin-bottom: var(--spacing-m); /* */
+    }
+    .btn { /* */
+        font-size: 1.1rem; /* */
+        padding: 12px 30px; /* */
+    }
+
+    .plus__wrap { /* */
+        padding: var(--spacing-m) 0; /* */
+    }
+    .parttitle { /* */
+        font-size: 1.8rem; /* */
+        margin-bottom: var(--spacing-m); /* */
+        padding-top: var(--spacing-m); /* */
+    }
+    .plus__item, .plus__item.reversed { /* */
+        flex-direction: column; /* */
+        text-align: center; /* */
+        margin-bottom: var(--spacing-l); /* */
+    }
+    .plus__img, .plus__txt { /* */
+        width: 100%; /* */
+    }
+    .plus__img { /* */
+        margin-bottom: var(--spacing-m); /* */
+    }
+    .plus__txt h3 { /* */
+        font-size: 1.3rem; /* */
+    }
+    .plus__txt h2 { /* */
+        font-size: 1.8rem; /* */
+    }
+    .plus__txt p { /* */
+        font-size: 1rem; /* */
+    }
+
+    .advantages__grid { /* */
+        grid-template-columns: 1fr; /* */
+    }
+    .advantages__item { /* */
+        padding: var(--spacing-s); /* */
+    }
+    .advantages__item h3 { /* */
+        font-size: 1.4rem; /* */
+    }
+    .advantages__item p { /* */
+        font-size: 0.95rem; /* */
+    }
+
+    .server-card { /* Адаптация из style_.css */
+        padding: 20px; /* */
+    }
+
+    .server-card__name { /* Адаптация из style_.css */
+        font-size: 20px; /* */
+    }
+
+    .server-card__description { /* Адаптация из style_.css */
+        font-size: 14px; /* */
+    }
+
+    .footer { /* Адаптация из style_.css */
+        font-size: 12px; /* */
+    }
+
+    .footer__column-title { /* Адаптация из style_.css */
+        font-size: 14px; /* */
+    }
+}
+
+/* Для очень маленьких мобильных устройств (менее 480px) */
+@media (max-width: 480px) {
+    .header { /* Адаптация из style_.css */
+        flex-direction: column; /* */
+        align-items: center; /* */
+        gap: 15px; /* */
+    }
+
+    .header__login-button { /* Адаптация из style_.css */
+        width: 100%; /* */
+        text-align: center; /* */
+        padding: 8px 15px; /* */
+    }
+
+    /* Адаптация для HTML элементов */
+    .menu {
+        gap: var(--spacing-xs); /* */
+    }
+    .menu li a {
+        font-size: 0.9rem; /* */
+        padding: 6px 10px; /* */
+    }
+
+    .hero__image-container { /* Адаптация из style_.css */
+        height: 250px; /* */
+    }
+
+    .main__title { /* */
+        font-size: 2.2rem; /* */
+    }
+    .main__txt { /* */
+        font-size: 1.1rem; /* */
+    }
+    .main__subtitle { /* */
+        font-size: 0.9rem; /* */
+    }
+    .btn { /* */
+        font-size: 1rem; /* */
+        padding: 10px 20px; /* */
+    }
+    .parttitle { /* */
+        font-size: 1.5rem; /* */
+        margin-bottom: var(--spacing-m); /* */
+    }
+    .plus__txt h2 { /* */
+        font-size: 1.5rem; /* */
+    }
+    .plus__txt p { /* */
+        font-size: 0.9rem; /* */
+    }
+
+    .advantages__item h3 { /* */
+        font-size: 1.2rem; /* */
+    }
+    .advantages__item p { /* */
+        font-size: 0.9rem; /* */
+    }
+}
