@@ -15,6 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
         hidePreloader();
     });
 
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active"); // Переключаем класс active на h3
+            
+            // Находим hint-текст, который следует сразу за h3
+            var hintText = this.nextElementSibling;
+            if (hintText && hintText.classList.contains('toggle-hint')) {
+                // Класс 'active' на h3 автоматически скроет hint-текст через CSS
+                // Если нужно дополнительное управление через JS, можно добавить здесь
+            }
+
+            // Находим блок контента (который следует за hint-текстом, или сразу за h3, если hint-текста нет)
+            var content;
+            if (hintText && hintText.classList.contains('toggle-hint')) {
+                content = hintText.nextElementSibling; // Контент после hint-текста
+            } else {
+                content = this.nextElementSibling; // Контент сразу после h3
+            }
+
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+
 });
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -67,7 +97,7 @@ function copyToClipboard(textData) {
     z.innerHTML = "Скопировано!";
     setTimeout(() => {
              z.innerHTML = "rilda.mettaneko.ru";
-        }, "2000");
+        }, "1000");
 	return false;
 }
 

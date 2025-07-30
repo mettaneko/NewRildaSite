@@ -919,6 +919,12 @@ img {
     background-color: #333333;
 }
 
+.rule-category .server-card__icon img { /* */
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
 /* Адаптация для существующего HTML (.plus__wrap) */
 .plus__wrap { /* Стили из style.css */
     padding: var(--spacing-l) 0; /* 60px сверху/снизу */ /* */
@@ -991,6 +997,10 @@ img {
     color: #ffb554; /* */
 }
 
+.light_gray_color { /* Стили из style.css */
+    color: #999999; /* */
+}
+
 .envy_color { /* Стили из style.css */
     color: #4fee72; /* */
 }
@@ -1013,6 +1023,9 @@ img {
 .green_color { /* Стили из style.css */
     color: var(--accent-green); /* */
 }
+.purple_color { /* Стили из style.css */
+    color: var(--accent-purple); /* */
+}
 
 .plus__txt .green_color { /* Стили из style.css */
     color: var(--accent-green); /* */
@@ -1021,6 +1034,7 @@ img {
 .plus__txt .purple_color { /* Стили из style.css */
     color: var(--accent-purple); /* */
 }
+
 
 /* ==================================== */
 /* 8. Advantages Section (Плюсы нашего сервера) */
@@ -1178,7 +1192,45 @@ footer { /* Стили из style.css */
     opacity: 0.5; /* Делаем линию менее заметной */
 }
 
+/* Existing styles for .collapsible and .content remain */
 
+/* Style for the hint text */
+.toggle-hint {
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    transition: all 0.45s ease; /* Add transition for smooth fade */
+}
+
+/* Hide the hint text when the collapsible content is active */
+/* Hide the hint text when the parent collapsible container is active */
+.collapsible-trigger-container.active .toggle-hint {
+    opacity: 0; /* Make it transparent */
+    max-height: 0; /* Collapse its space */
+    overflow: hidden; /* Hide overflow content */
+    margin: 0; /* Remove margins */
+    padding: 0; /* Remove padding */
+}
+
+/* Optional: Add some padding to the h3 inside the collapsible-trigger-container if needed */
+.collapsible-trigger-container h3 {
+    margin: 0; /* Remove default margin from h3 */
+    padding-bottom: 5px; /* Add some spacing if needed */
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+
+.rule-list hr {
+    border: none; /* Сбрасываем стандартные стили hr */
+    border-bottom: 2px solid var(--border-color); /* Применяем границу снизу */
+    margin: 20px 0; /* Добавляем отступы сверху и снизу */
+    
+}
 
 .sidebar-title {
     font-size: 1.5em;
@@ -1331,6 +1383,13 @@ footer { /* Стили из style.css */
     padding-bottom: 10px;
 }
 
+.rule-category-title-v2 {
+    font-size: 2em;
+    color: var(--text-white);
+    margin-bottom: 2px;
+    padding-bottom: 10px;
+}
+
 .rule-list {
     list-style: none;
     padding-left: 0;
@@ -1363,13 +1422,11 @@ footer { /* Стили из style.css */
     align-items: center;
 }
 
-.rule-list li > strong.red_color { /* Changed: removed space between span and .red_color */
+strong.red_color { /* Changed: removed space between span and .red_color */
     color: var(--accent-red);
 }
-.rule-list li > span.green_color { /* Changed: removed space between span and .red_color */
-    color: var(--accent-green);
-}
-.rule-list li > strong.green_color { /* Changed: removed space between span and .red_color */
+
+strong.green_color { /* Changed: removed space between span and .red_color */
     color: var(--accent-green);
 }
 
