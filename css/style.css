@@ -530,7 +530,7 @@ img {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Затемнение фонового изображения */
     z-index: -3; /* Place pseudo-element even further back */
-    background: url('/assets/2023-06-28_14.50.01.png') center center no-repeat;
+    /* background: url('/assets/2023-06-28_14.50.01.png') center center no-repeat;*/
     transition: all 0.3s ease;
 }
 

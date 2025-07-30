@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
-
-    // Функция, которая будет скрывать прелоадер
     function hidePreloader() {
         if (preloader) {
             preloader.classList.add('hidden');
@@ -17,6 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
         hidePreloader();
     });
 
+});
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+    const z = document.querySelector("#copy-to-clipboard");
+    const title = document.querySelector(".hero__title");
+    const m = document.getElementById("press");
+    const x = document.getElementById("meow");
+    const v = getRandomInt(12)
+    console.log(v);
+    if (v == 12){
+        x.src = 'assets/meow.mp4';
+        x.load();
+        title.innerHTML = "Прогрессирующий OneShot++ Сервер";
+        m.innerHTML="Присоединяйтесь к выживанию, где каждый найдет идеальные условия для своего творчества. Без приватов и лишних плагинов. Кстати, вы нашли пасхалку.";
+    }
+    if (v == 11){
+        x.src = 'assets/meow2.mp4';
+        x.load();
+        title.innerHTML = "Прогрессирующий OneShot++ Сервер";
+        m.innerHTML="Присоединяйтесь к выживанию, где каждый найдет идеальные условия для своего творчества. Без приватов и лишних плагинов. Кстати, вы нашли пасхалку.";
+    }
     // Дополнительная проверка на случай, если window.load не сработает вовремя
     // или для очень быстрых загрузок, когда DOMContentLoaded уже произошел
     // до того, как скрипт успел навесить слушатель load
@@ -24,15 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         hidePreloader();
     }
 
-});
-
 
 function copyToClipboard(textData) {
 	if (window.clipboardData) { // this is for Internet Explorer
 		window.clipboardData.setData("Text", textData);
-        var z = document.querySelector("#copy-to-clipboard");
-    z.innerHTML = "Скопировано!";
-    setTimeout(() => z.innerHTML("rilda.mettaneko.ru"), 300);
+    
 	}
 	else { // this is for Edge, Firefox, Chrome and Safari; this also works with IE, but it does not work as smoothly as above code causing the page to jump around
 		var t = document.createElement("textarea"); // create textarea element
@@ -46,10 +62,12 @@ function copyToClipboard(textData) {
 		document.execCommand("copy"); // IMPORTANT: "copy" works as a result of user events, like "click" event
 		document.body.removeChild(t); // remove the textarea element
         var z = document.querySelector("#copy-to-clipboard");
-    z.innerHTML = "Скопировано!";
-    setTimeout(() => z.innerHTML("rilda.mettaneko.ru"), 300);
+
 	}
-    
+    z.innerHTML = "Скопировано!";
+    setTimeout(() => {
+             z.innerHTML = "rilda.mettaneko.ru";
+        }, "2000");
 	return false;
 }
 
