@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="preloader">
+    <img src="assets/logo_dark.png" class="loader" alt="">
+    </div>
     <header class="header">
         <div class="header__left">
             <a href="/" class="header__logo">
@@ -38,36 +41,19 @@
     <main>
         <section id="wiki-page" class="rules-section-page"> <div class="wrap rules-flex-container">
                 <aside class="rules-sidebar">
-                    <h4 class="sidebar-title">Введение</h4>
+                    <h4 class="sidebar-title">Википедия</h4>
                     <ul>
                         <li><a href="#introduction">Введение</a></li>
                         <li><a href="#faq">Часто задаваемые вопросы</a></li>
-                        <li><a href="#terms">Словарь терминов</a></li>
-                        <li><a href="#commands">Команды</a></li>
                     </ul>
                     <h4 class="sidebar-title">Игровой контент</h4>
                     <ul>
-                        <li><a href="#item-edit">Item Edit</a></li>
                         <li><a href="#new-crafts">Новые крафты</a></li>
-                        <li><a href="#invisible-frames">Невидимые рамки</a></li>
-                        <li><a href="#resources-emotes">Ресурсы и смайлы</a></li>
-                        <li><a href="#social-rating">Социальный рейтинг</a></li>
-                        <li><a href="#litematica-guide">Краткий гайд по моду Litematica</a></li>
-                        <li><a href="#heads">Головы</a></li>
-                        <li><a href="#external-view">Внешний вид</a></li>
-                        <li><a href="#text-displays">Текстовые дисплеи</a></li>
+                        <li><a href="#rebalanced-mobs">Усиленные мобы</a></li>
                         <li><a href="#moderator-contact">Связь с модераторами</a></li>
-                        <li><a href="#stands-customization">Кастомизация стендов</a></li>
+                        <hr>
+                        <li><a href="/">На главную</a></li>
                     </ul>
-                    <h4 class="sidebar-title">Профиль</h4>
-                    <ul>
-                        <li><a href="#account-change">Смена аккаунта</a></li>
-                        <li><a href="#private-accounts">Привязанные аккаунты</a></li>
-                    </ul>
-                    <h4 class="sidebar-title">Legal</h4>
-                    <ul>
-                        <li><a href="/rules">Правила сервера</a></li>
-                        </ul>
                 </aside>
 
                 <div class="rules-content">
@@ -81,116 +67,280 @@
                         <h3 class="rule-category-title">Впервые на сервере?</h3>
                         <ul class="rule-list">
                             <li><a href="/rules">Правила сервера</a></li>
-                            <li><a href="#commands">Команды сервера</a></li>
-                            <li><a href="#">Разрешенные и запрещенные модификации</a></li>
-                            <li><a href="#resources-emotes">Ресурсы и смайлы</a></li>
-                            <li><a href="#social-rating">Система социального рейтинга</a></li>
-                            <li><a href="#">Интеграция с Discord, Twitch и Google</a></li>
-                            <li><a href="#terms">Словарь терминов, используемые на сервере</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="rule-category" id="find-guides">
-                        <h3 class="rule-category-title">Ищете гайды?</h3>
-                        <ul class="rule-list">
-                            <li><a href="#litematica-guide">Гайд по моду Litematica</a></li>
-                            <li><a href="#">Гайд по кастомизации стендов для брони</a></li>
-                            <li><a href="#invisible-frames">Гайд по невидимым рамкам</a></li>
-                            <li><a href="#text-displays">Гайд по текстовым дисплеям</a></li>
+                            <li><a href="/wiki#new-crafts">Новые крафты</a></li>
                         </ul>
                     </div>
                     
-                    <div class="rule-category" id="item-edit">
-                        <h3 class="rule-category-title">Item Edit</h3>
+                    <div class="rule-category" id="faq">
+                        <h3 class="rule-category-title">Часто задаваемые вопросы</h3>
                         <ul class="rule-list">
-                            <li>Информация про Item Edit...</li>
+                            <li><span id="vanilla">Что такое Vanilla++?</span>
+                                    <ul>
+                                        <li>Главная идея Vanilla++ — это не радикальное изменение игры, а дополнение её новыми возможностями, предметами или механиками, которые ощущаются так, будто они могли бы быть частью оригинальной игры</li>
+                                    </ul>
+                                </li>
+                            
                         </ul>
                     </div>
+
                     <div class="rule-category" id="new-crafts">
                         <h3 class="rule-category-title">Новые крафты</h3>
                         <ul class="rule-list">
-                            <li>Информация про новые крафты...</li>
+                            <div class="recommendation-box" id="red_color">
+                            <h3><i class="icon-recommendation" id="red_color"></i> Рекомендация</h3>
+                            <p>Вы можете использовать поиск на странице в браузере для поиска на странице</p>
+                            <ul>
+                                <li>На Windows: <kbd>Ctrl</kbd> + <kbd>F</kbd></li>
+                                <li>На мобильных устройствах: Меню браузера → Поиск</li>
+                                <li>На macOS: <kbd>Cmd</kbd> + <kbd>F</kbd></li>
+                            </ul>
+                        </div>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text lust_color" id="">Сладко-жаренное рагу</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/sweety_coal.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text blue_color" id="">Мягко-твёрдый клубочек</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/diamond_wool.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text red_color" id="">Погасшая редстоуновая пыль</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/died_redstone.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text milked_color" id="">Какао-молочный порошок</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/cocoa.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text green_color">Амулет Торговца</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/amulet_traders.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                            <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text blue_color" id="">Заготовка Творца</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Верстак.</p>
+                                        <div class="media-container">
+                                            <img src="assets/core.png" class="video-self-hosted" alt="">
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text pride_color" id="">Шоколад Гордыни</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Амулет Торговца > Осколок аместита [x4]</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/pride.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text greed_color" id="">Шоколад Алчности</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Золотой блок [x2] > Алмазная кирка</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/greed.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text lust_color" id="">Шоколад Похоти</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Сверкающий ломтик арбуза [x4] > Кроличья лапка [x12]</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/lust.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text envy_color" id="">Шоколад Зависти</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Испорченная редстоуновая пыль > Мягко-твёрдый клубочек [x8] > Сладко-жаренное рагу</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/envy.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                    <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text gluttony_color" id="">Шоколад Чревоугодия</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Сладко-жаренное рагу > Золотое яблоко</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/gluttony.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                    <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text red_color" id="">Шоколад Гнева</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Испорченная редстоуновая пыль > Железный меч</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/wrath.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="media-layout-block">
+                                    <div class="media-layout-block__main-content">
+                                        <h3 class="media-layout-block__main-text blue_color" id="">Шоколад Лени</h3>
+                                        <p class="media-layout-block__main-subtext">Крафт осуществляется через Заготовку Творца.</p>
+                                        <p class="media-layout-block__main-subtext">Какао-молочный порошок > Мягко-твёрдый клубочек [x6] > Белая кровать > Книжная полка [x3]</p>
+                                        <div class="media-container">
+                                            <video class="video-self-hosted" autoplay muted loop disablePictureInPicture controlsList="nodownload">
+                                                <source src="/assets/sloth.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </section>
+                            </ul>
+                        </li>
                         </ul>
                     </div>
-                    <div class="rule-category" id="invisible-frames">
-                        <h3 class="rule-category-title">Невидимые рамки</h3>
+
+                    <div class="rule-category" id="rebalanced-mobs">
+                        <h3 class="rule-category-title">Усиленные мобы</h3>
                         <ul class="rule-list">
-                            <li>Информация про невидимые рамки...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="resources-emotes">
-                        <h3 class="rule-category-title">Ресурсы и смайлы</h3>
-                        <ul class="rule-list">
-                            <li>Информация про ресурсы и смайлы...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="social-rating">
-                        <h3 class="rule-category-title">Социальный рейтинг</h3>
-                        <ul class="rule-list">
-                            <li>Информация про социальный рейтинг...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="litematica-guide">
-                        <h3 class="rule-category-title">Краткий гайд по моду Litematica</h3>
-                        <ul class="rule-list">
-                            <li>Информация про Litematica...</li>
-                        </ul>
-                    </div>
-                     <div class="rule-category" id="heads">
-                        <h3 class="rule-category-title">Головы</h3>
-                        <ul class="rule-list">
-                            <li>Информация про головы...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="external-view">
-                        <h3 class="rule-category-title">Внешний вид</h3>
-                        <ul class="rule-list">
-                            <li>Информация про внешний вид...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="text-displays">
-                        <h3 class="rule-category-title">Текстовые дисплеи</h3>
-                        <ul class="rule-list">
-                            <li>Информация про текстовые дисплеи...</li>
-                        </ul>
-                    </div>
+                        <li><span>Болотник [Bogged]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">16</strong> => <strong class="red_color">48</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Вредина [Vex]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">14</strong> => <strong class="red_color">20</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Ведьма [Witch]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">26</strong> => <strong class="red_color">50</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Визер [Wither]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">300</strong> => <strong class="red_color">600</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Визер-Скелет [Wither Skeleton]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">20</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Вихрь [Breeze]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">30</strong> => <strong class="red_color">90</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Всполох [Blaze]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">20</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Гаст [Ghast]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">10</strong> => <strong class="red_color">30</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Заклинатель [Evoker]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">24</strong> => <strong class="red_color">48</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Зоглин [Zoglin]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">40</strong> => <strong class="red_color">100</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Зомби [Zombie]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">20</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Поборник [Vindicator]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">24</strong> => <strong class="red_color">48</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Скелет [Skeleton]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">20</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Страж [Guardian]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">30</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Хаск [Husk]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">20</strong> => <strong class="red_color">60</strong> HP</li>
+                            </ul>
+                        </li>
+                        <li><span>Хоглин [Hoglin]</span>
+                            <ul>
+                                <li>Здоровье: <strong class="green_color">40</strong> => <strong class="red_color">100</strong> HP</li>
+                            </ul>
+                        </li>
+                    </ul>
+
                     <div class="rule-category" id="moderator-contact">
-                        <h3 class="rule-category-title">Связь с модераторами</h3>
+                        <h3 class="rule-category-title">Модерация</h3>
                         <ul class="rule-list">
-                            <li>Информация про связь с модераторами...</li>
-                        </ul>
+                            <div class="server-card__header">
+                        <div class="server-card__icon">
+                            <img src="https://mc-heads.net/avatar/mettaneko/100" alt="Сезон A: OptiLand">
+                        </div>
+                        <h3 class="server-card__name">mettaneko</h3>
+                        
                     </div>
-                    <div class="rule-category" id="stands-customization">
-                        <h3 class="rule-category-title">Кастомизация стендов</h3>
-                        <ul class="rule-list">
-                            <li>Информация про кастомизацию стендов...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="account-change">
-                        <h3 class="rule-category-title">Смена аккаунта</h3>
-                        <ul class="rule-list">
-                            <li>Информация про смену аккаунта...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="private-accounts">
-                        <h3 class="rule-category-title">Привязанные аккаунты</h3>
-                        <ul class="rule-list">
-                            <li>Информация про привязанные аккаунты...</li>
-                        </ul>
-                    </div>
-                    <div class="rule-category" id="commands">
-                        <h3 class="rule-category-title">Команды</h3>
-                        <ul class="rule-list">
-                            <li>Информация про команды...</li>
-                        </ul>
-                    </div>
-                     <div class="rule-category" id="terms">
-                        <h3 class="rule-category-title">Словарь терминов</h3>
-                        <ul class="rule-list">
-                            <li>Информация про словарь терминов...</li>
-                        </ul>
-                    </div>
+                    <a href="https://t.me/projectrilda" class="server-card__details-button">Связаться</a>
                 </div>
+                    
+                    <!--<a href="#" class="server-card__details-button">Подробнее</a>-->
+                </div>
+                    </ul>
+            </div>
+        </section>
             </div>
         </section>
     </main>
@@ -208,5 +358,6 @@
             </ul>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

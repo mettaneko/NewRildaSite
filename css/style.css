@@ -3,12 +3,44 @@
 /* ==================================== */
 /* 1. CSS Variables (Переменные)      */
 /* ==================================== */
+/* Preloader Styles */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark); /* Используем вашу переменную для фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Убедитесь, что прелоадер находится поверх всего */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Анимация вращения */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 html {
     scroll-behavior: smooth;
 }
 :root {
     --bg-dark: rgb(1, 1, 1);            /* Основной фон из style.css */
-    --bg-medium: rgb(15, 15, 15);          /* Фон для блоков, хедера из style.css */
+    --bg-medium: rgb(7, 7, 7);          /* Фон для блоков, хедера из style.css */
     --bg-light: rgb(20, 20, 20);           /* Для внутренних элементов из style.css */
     --text-light: white;                   /* Основной светлый текст из style.css */
     --text-medium: rgb(182, 182, 182);     /* Для ховера меню, второстепенный текст из style.css */
@@ -18,12 +50,12 @@ html {
     --text-grey: #A0A0A0;                  /* Добавлено из style_.css */
 
 
-    --accent-blue: #3f7ff5;      /* Основной акцентный синий из style.css */
+    --accent-blue: #6a92ff;      /* Основной акцентный синий из style.css */
     --accent-hover: #252525; /* Добавлено для ховера */
 
-    --accent-red: rgb(224, 36, 67);        /* Красный для негативных акцентов из style.css */
+    --accent-red: #ff5555;        /* Красный для негативных акцентов из style.css */
     --accent-green: rgb(39, 211, 116);     /* Зеленый для позитивных акцентов из style.css */
-    --accent-purple: #8560ff;
+    --accent-purple: #b277ff;
 
     --purple-main: #6A3FF5;                /* Добавлено из style_.css */
     --purple-dark: #5833CD;                /* Добавлено из style_.css */
@@ -120,6 +152,193 @@ img {
     padding-top: var(--spacing-l); /* 60px */
     color: var(--text-white); /* Из style_.css */
 }
+
+/* ==================================== */
+/* 3. Media Layout Block (Новый класс) */
+/* ==================================== */
+
+.media-layout-block {
+    display: flex;
+    flex-direction: column; /* По умолчанию: колонки для мобильных устройств */
+    gap: 20px; /* Уменьшаем отступ для мобильных устройств */
+    margin-top: 30px; /* Немного уменьшаем отступы для мобильных */
+    margin-bottom: 30px;
+    padding: 15px; /* Уменьшаем внутренние отступы для мобильных */
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+}
+
+.media-layout-block__description {
+    flex: 1;
+    padding: 15px; /* Сохраняем, если подходит */
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--border-color);
+}
+
+.media-layout-block__description-title {
+    font-size: 1.2em; /* Немного уменьшаем заголовок описания для мобильных */
+    color: var(--text-heading);
+    margin-bottom: 8px;
+}
+
+.media-layout-block__description p {
+    font-size: 0.95em; /* Немного уменьшаем шрифт параграфов в описании */
+}
+
+.media-layout-block__main-content {
+    flex: 2;
+    text-align: center;
+    padding: 15px; /* Сохраняем, если подходит */
+}
+
+.media-layout-block__main-text {
+    font-size: 1.6em; /* Немного уменьшаем основной заголовок для мобильных */
+    color: var(--text-heading);
+    margin-bottom: 10px;
+}
+
+.media-layout-block__main-subtext,
+.media-layout-block__main-bottom-text {
+    font-size: 1em; /* Немного уменьшаем шрифт основного текста */
+    color: var(--text-color);
+    margin-bottom: 15px; /* Уменьшаем отступ */
+    max-width: 100%; /* Убедимся, что на мобильных нет лишних ограничений */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5px; /* Небольшой горизонтальный отступ, чтобы текст не прилипал к краям */
+    padding-right: 5px;
+}
+
+/* Адаптация для планшетов и десктопов (min-width: 768px) */
+@media (min-width: 768px) {
+    .media-layout-block {
+        flex-direction: row; /* На десктопах располагаем элементы в ряд */
+        gap: 30px; /* Возвращаем больший отступ для десктопов */
+        margin-top: 40px; /* Возвращаем больший отступ для десктопов */
+        margin-bottom: 40px;
+        padding: 20px; /* Возвращаем больший внутренний отступ */
+    }
+
+    .media-layout-block__description {
+        padding-right: 30px; /* Дополнительный отступ справа для описания */
+    }
+
+    .media-layout-block__description-title {
+        font-size: 1.4em; /* Возвращаем больший размер для десктопов */
+    }
+
+    .media-layout-block__description p {
+        font-size: 1em; /* Возвращаем больший размер для десктопов */
+    }
+
+    .media-layout-block__main-text {
+        font-size: 1.8em; /* Возвращаем больший размер для десктопов */
+    }
+
+    .media-layout-block__main-subtext,
+    .media-layout-block__main-bottom-text {
+        font-size: 1.1em; /* Возвращаем больший размер для десктопов */
+        max-width: 800px; /* Ограничиваем ширину текста для читаемости на десктопах */
+        padding-left: 0; /* Убираем отступы, если не нужны на десктопах */
+        padding-right: 0;
+    }
+}
+
+/* ========================================= */
+/* Стили для медиа-элементов (убедитесь, что они также адаптированы) */
+/* ========================================= */
+
+/* Wrapper for media elements within rule list items - Сохраняется */
+/* Добавил класс .media-layout-block для применения стилей внутри нового блока */
+.rule-list .media-container,
+.media-layout-block .media-container {
+    margin: 20px auto; /* Центрируем контейнер с видео/изображением */
+    max-width: 100%; /* Убедимся, что на мобильных занимает всю ширину контейнера */
+    background-color: var(--bg-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+    .media-layout-block .media-container {
+        max-width: 800px; /* Ограничиваем максимальную ширину видео внутри main-content на десктопах */
+    }
+}
+
+
+/* Для адаптивных тегов <video> - Сохраняется */
+/* Добавил класс .media-layout-block для применения стилей внутри нового блока */
+.rule-list .video-self-hosted,
+.media-layout-block .video-self-hosted {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Немного уменьшил максимальную высоту видео для мобильных */
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #000;
+}
+
+@media (min-width: 768px) {
+    .media-layout-block .video-self-hosted {
+        max-height: 600px; /* Возвращаем большую высоту для десктопов */
+    }
+}
+
+/* Для изображений внутри элементов списка - Сохраняется */
+.rule-list .image-responsive,
+.media-layout-block .image-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+/* Опционально: Стили для подписей - Сохраняется */
+.rule-list .media-caption,
+.media-layout-block .media-caption {
+    font-size: 0.85em; /* Немного уменьшаем шрифт подписи для мобильных */
+    color: var(--text-medium);
+    text-align: center;
+    padding: 8px 10px; /* Уменьшаем отступы подписи */
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+    .rule-list .media-caption,
+    .media-layout-block .media-caption {
+        font-size: 0.9em; /* Возвращаем больший размер для десктопов */
+        padding: 10px 15px; /* Возвращаем отступы для десктопов */
+    }
+}
+
+/* ... Остальные ваши стили CSS ... */
+
+/* Убедитесь, что ваши стили для .media-container и .video-self-hosted уже есть и корректны, как мы обсуждали ранее */
+/* Например: */
+/*
+.rule-list .media-container, .media-layout-block .media-container {
+    margin: 20px auto; // Центрируем контейнер с видео/изображением
+    max-width: 800px; // Ограничиваем максимальную ширину видео внутри main-content
+    // ... остальные стили из предыдущих шагов
+}
+.rule-list .video-self-hosted, .media-layout-block .video-self-hosted {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    // ... остальные стили из предыдущих шагов
+}
+.media-layout-block .media-caption {
+    // Если хотите переопределить стили подписей конкретно для этого блока
+}
+*/
 
 /* ==================================== */
 /* 4. Header (Шапка сайта)            */
@@ -275,9 +494,8 @@ img {
     padding-top: 40px;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(5px); /* Добавлено это свойство */
     border-radius: 48px;
-    
+    z-index: 1; /* Ensure the hero section itself has a stacking context */
 }
 .hero__video-background {
     position: absolute;
@@ -286,11 +504,23 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Заполняет всю область, обрезая при необходимости */
-    z-index: -1; /* Помещает видео под содержимое hero__text-content */
-    filter: blur(10px); /* Применяет размытие к самому видео */
+    z-index: -2; /* Place video behind everything */
+    border-radius: 48px;
     transition: all 0.3s ease;
 }
+.middle-container{
+  /* gradient overlay */
+  z-index: -1; /* Place gradient above video but below content */
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  height: 100%;
+    background: linear-gradient(90deg, var(--bg-dark), rgba(255,255,255,0));
+    
 
+}
 .hero::before {
     content: '';
     position: absolute;
@@ -299,23 +529,22 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Затемнение фонового изображения */
-    z-index: -1;
-    filter: blur(10px);
+    z-index: -3; /* Place pseudo-element even further back */
     background: url('/assets/2023-06-28_14.50.01.png') center center no-repeat;
     transition: all 0.3s ease;
 }
 
-.hero:hover::before {
-    filter: blur(0px); /* Применяет размытие к самому видео */
-}
+
 
 .hero__video-background:hover {
     filter: blur(0px); /* Применяет размытие к самому видео */
 }
 .hero__content { /* Новый класс, стили из style_.css */
     max-width: 550px;
-    z-index: 1;
+    z-index: 2; /* Ensure content is on top of gradient and video */
 }
+
+/* Rest of your CSS remains unchanged */
 
 .hero__title { /* Новый класс, стили из style_.css */
     font-size: 48px;
@@ -367,11 +596,18 @@ img {
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
+    font-family: var(--font-inter);
     border: 2px solid var(--text-light);
     transition: background-color 0.3s ease;
 }
 
 .hero__ip-display:hover { /* Новый класс, стили из style_.css */
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.hero__ip-display:active { /* Новый класс, стили из style_.css */
     background-color: var(--text-light);
     border-color: var(--text-light);
     color: var(--bg-dark);
@@ -611,7 +847,7 @@ img {
 .server-card__icon { /* Новый класс, стили из style_.css */
     width: 50px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -734,6 +970,48 @@ img {
 
 .plus__txt .red_color { /* Стили из style.css */
     color: var(--accent-red); /* */
+}
+
+.red_color { /* Стили из style.css */
+    color: var(--accent-red); /* */
+}
+
+/*.recommendation-box#red_color {  Стили из style.css
+    border-left-color: var(--accent-red);
+}*/
+/*.recommendation-box .icon-recommendation#red_color {
+    background-color: var(--accent-red)
+}*/
+
+.blue_color { /* Стили из style.css */
+    color: var(--accent-blue); /* */
+}
+
+.gluttony_color { /* Стили из style.css */
+    color: #ffb554; /* */
+}
+
+.envy_color { /* Стили из style.css */
+    color: #4fee72; /* */
+}
+
+.lust_color { /* Стили из style.css */
+    color: #ff40b0; /* */
+}
+
+.greed_color { /* Стили из style.css */
+    color: #ffdf50; /* */
+}
+
+.pride_color { /* Стили из style.css */
+    color: #b277ff; /* */
+}
+
+.milked_color { /* Стили из style.css */
+    color: #c47d3b; /* */
+}
+.green_color { /* Стили из style.css */
+    color: var(--accent-green); /* */
 }
 
 .plus__txt .green_color { /* Стили из style.css */
@@ -1074,6 +1352,26 @@ footer { /* Стили из style.css */
     margin-right: 10px;
     
 }
+.rule-list li > span.red_color { /* Changed: removed space between span and .red_color */
+    color: var(--accent-red);
+}
+
+.rule-list li > span.font-24 { /* Changed: removed space between span and .red_color */
+    color: var(--accent-red);
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.rule-list li > strong.red_color { /* Changed: removed space between span and .red_color */
+    color: var(--accent-red);
+}
+.rule-list li > span.green_color { /* Changed: removed space between span and .red_color */
+    color: var(--accent-green);
+}
+.rule-list li > strong.green_color { /* Changed: removed space between span and .red_color */
+    color: var(--accent-green);
+}
 
 .rule-list li a {
     color: var(--accent-purple);
@@ -1097,14 +1395,73 @@ footer { /* Стили из style.css */
     margin-bottom: 5px;
     
 }
+/* --- Rule List Media Optimization (для тега <video>) --- */
 
+/* Wrapper for media elements within rule list items - Сохраняется */
+.rule-list .media-container {
+    background-color: var(--bg-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    /* Дополнительно: Если вы хотите, чтобы сам контейнер имел максимальную высоту */
+    max-height: 450px;
+    max-height: 350px;
+    display: flex; /* Если хотите центрировать видео внутри контейнера */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Для адаптивных тегов <video> */
+.rule-list .video-self-hosted {
+    display: block;
+    height: auto; /* Высота автоматически подстроится, сохраняя пропорции */
+    max-height: 450px; /* Установите желаемую максимальную высоту для видео */
+    max-width: 625px; /* Установите желаемую максимальную высоту для видео */
+    object-fit: contain; /* Гарантирует, что видео будет полностью видно внутри своего блока, не обрезаясь. Если пропорции видео и заданного max-height не совпадают, будут добавлены "пустые" полосы. */
+    border-radius: 8px;
+}
+
+/* Для изображений внутри элементов списка - Сохраняется */
+.rule-list .image-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+/* Опционально: Стили для подписей - Сохраняется */
+.rule-list .media-caption {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    text-align: center;
+    padding: 10px 15px;
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Корректировка отступов для вложенных списков при наличии медиа - Сохраняется */
+.rule-list li > .media-container + ul {
+    margin-top: 20px;
+}
+
+/* Корректировка отступов для элементов списка, содержащих только медиа - Сохраняется */
+.rule-list li.media-only {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
+}
 /* Адаптация для мобильных устройств */
 @media (max-width: 1024px) {
     .rules-flex-container {
         flex-direction: column;
         gap: 30px;
     }
-
+    .hero__video-background {border-radius: 0px;}
+    .middle-container{
+    background: linear-gradient(var(--bg-dark), rgba(255,255,255,0));
+    }
     .rules-sidebar {
         position: static; /* Снимаем sticky для мобильных */
         flex: auto;
@@ -1354,7 +1711,7 @@ footer { /* Стили из style.css */
         align-items: flex-start; /* */
         gap: 10px; /* */
     }
-
+    
     #mobile_header{
             display: flex;
         align-items: center;

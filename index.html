@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/style.css"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <div id="preloader">
+    <img src="assets/logo_dark.png" class="loader" alt="">
+    </div>
     <header class="header">
         <div class="header__left">
             <a href="#" class="header__logo">
@@ -37,14 +40,17 @@
     <main>
         <section class="hero" id="home">
             <div class="hero__content">
-                <video autoplay muted loop playsinline class="hero__video-background">
+                
+                <video autoplay muted loop disablePictureInPicture controlsList="nodownload" class="hero__video-background">
                     <source src="https://www.dropbox.com/scl/fi/tg2ofr11t4oi1l9d5jgyn/mewr2k.mp4?rlkey=uowiuhco3r1ninx14k98wx24y&st=fotmzffh&dl=1" type="video/mp4" alt="тут что-то было.."> </video>
-                <p class="hero__description" id="version">Версия 1.21.8, Пиратский</p>
-                <h1 class="hero__title">Прогрессирующий Vanilla++ Сервер </h1>
-                <p class="hero__description">Присоединяйтесь к выживанию, где каждый найдет идеальные условия для своего творчества. Без приватов и лишних плагинов.</p>
-                <div class="hero__buttons">
-                    <a href="#" class="hero__our-server-button">Присоединиться к серверу</a>
-                    <span class="hero__ip-display">rilda.mettaneko.ru</span>
+                    <div class="middle-container"></div>
+                    <p class="hero__description" id="version">Версия 1.21.8, Пиратский</p>
+                    <h1 class="hero__title">Прогрессирующий Vanilla++ Сервер </h1>
+                    <p class="hero__description">Присоединяйтесь к выживанию, где каждый найдет идеальные условия для своего творчества. Без приватов и лишних плагинов.</p>
+                    <div class="hero__buttons">
+                    <a href="https://mettaneko.ru/projectrilda" class="hero__our-server-button">Присоединиться к серверу</a>
+                    <span class="hero__ip-display" id="copy-to-clipboard" href="javascript:;" onclick="return copyToClipboard(this.innerText);">rilda.mettaneko.ru</span>
+                
                 </div>
             <!--<div class="hero__image-container">
                 <video autoplay muted loop playsinline>
@@ -57,9 +63,9 @@
                 <h2 class="parttitle">Плюсы нашего проекта</h2>
                 <div class="plus__item">
                     <div class="plus__txt">
-                        <h3>Железо</h3>
-                        <h2>Наш процессор - идеален для потребств сервера</h2>
-                        <p>Нашим процессором является MediaTek Dimensity 8100 Ultra, который держит наши сервера и в добавок может держать еще несколько серверов.</p>
+                        <h3 class="green_color">Чистота геймплея</h3>
+                        <h2>Ощутите абсолютную свободу и вызов!</h2>
+                        <p>Отсутствие приватных зон и ненужных плагинов дарит вам полную автономию в игровом мире. Каждое ваше решение имеет вес, добавляя в игру новые вещи, делая ваше приключение по-настоящему захватывающим.</p>
                     </div>
                   <!--<img src="assets/lust.png" alt="Правила" class="plus__img">-->
                 </div>
@@ -77,7 +83,7 @@
                         <h3 class="purple_color">Эксклюзивность</h3>
                         <h2>Мы занимаем хорошую нишу серверов</h2>
                         <p>На нашем сервере НЕТ модов, но есть дополнения в формате Vanilla++, что делает нас более эксклюзивным среди других.</p>
-                        <a href="/wiki" class="server-card__details-button">Что такое Vanilla++?</a>
+                        <a href="/wiki#vanilla" class="server-card__details-button">Что такое Vanilla++?</a>
                     </div>
                   <!--<img src="assets/lust.png" alt="Правила" class="plus__img">-->
                 </div>
@@ -163,5 +169,6 @@
             </ul>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
