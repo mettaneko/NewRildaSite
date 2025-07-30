@@ -53,7 +53,7 @@ function getRandomInt(max) {
     const title = document.querySelector(".hero__title");
     const m = document.getElementById("press");
     const x = document.getElementById("meow");
-    const v = getRandomInt(12)
+    const v = getRandomInt(13)
     console.log(v);
     if (v == 12){
         x.src = 'assets/meow.mp4';
