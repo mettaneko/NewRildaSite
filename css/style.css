@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@800&display=swap'); /* Объединены импорты шрифтов */
+@font-face {
+  font-family: "Minecraft";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/minecraft.ttf") format("ttf"),
+       url("/fonts/minecraft.woff") format("woff"),
+       url("/fonts/minecraft.woff2") format("woff2")
+    }
 
 /* ==================================== */
 /* 1. CSS Variables (Переменные)      */
@@ -22,6 +30,10 @@
 #preloader.hidden {
     opacity: 0;
     visibility: hidden;
+}
+
+.minecraft {
+    font-family: var(--font-minecraft);
 }
 
 .loader {
@@ -68,6 +80,7 @@ html {
 
     --font-inter: 'Inter', sans-serif;
     --font-manrope: 'Manrope', sans-serif;
+    --font-minecraft: 'Minecraft', sans-serif;
 
     --border-radius-base: 24px;            /* Радиус скругления для крупных блоков из style.css */
     --border-radius-small: 20px;           /* Радиус для кнопок, изображений из style.css */
